@@ -1,0 +1,318 @@
+{
+  "info": {
+    "_postman_id": "30547407-741f-4475-a363-04cc708d165b",
+    "name": "Projects",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "10921404"
+  },
+  "item": [
+    {
+      "name": "crear",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var response = pm.response.json();\r",
+              "pm.collectionVariables.set(\"PROJECT_ID\", response.Id);\r",
+              "\r",
+              "//verificaciones\r",
+              "pm.test(\"Verify Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Proyect Name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"Proyecto Postman\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Proyect Icon\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(5);\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "ca123333sa",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "carlos.saro25@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Content\": \"Proyecto Postman\",\r\n    \"Icon\": 5\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://todo.ly/api/projects.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//verificaciones\r",
+              "pm.test(\"Verify Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Proyect Name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"Proyecto Postman Actualizado\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Proyect Icon\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(2);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "ca123333sa",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "carlos.saro25@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Content\": \"Proyecto Postman Actualizado\",\r\n    \"Icon\": 2\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://todo.ly/api/projects/{{PROJECT_ID}}.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{PROJECT_ID}}.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//verificaciones\r",
+              "pm.test(\"Verify Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Proyect Name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"Proyecto Postman Actualizado\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Proyect Icon\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(2);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "ca123333sa",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "carlos.saro25@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://todo.ly/api/projects/{{PROJECT_ID}}.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{PROJECT_ID}}.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//verificaciones\r",
+              "pm.test(\"Verify Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Proyect Name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"Proyecto Postman Actualizado\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Proyect Icon\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(2);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Deleted Project\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Deleted).to.eql(true);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "ca123333sa",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "carlos.saro25@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://todo.ly/api/projects/{{PROJECT_ID}}.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{PROJECT_ID}}.json"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "auth_password_0ilo"
+    },
+    {
+      "key": "PROJECT_ID",
+      "value": ""
+    }
+  ]
+}
