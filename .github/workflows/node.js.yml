@@ -22,6 +22,6 @@ jobs:
         node-version: '24.x'
     - name: install newman
       run: npm install -g newman
-    - name: npm test
+    - name: run test
       run: newman run Projects.postman_collection.json
     
